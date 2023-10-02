@@ -10,7 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_01_015150) do
+ActiveRecord::Schema.define(version: 2023_10_02_120250) do
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "amount", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "price", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "price_excluding_tax", null: false
+    t.integer "number_of_items", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "shipping_postal_code", null: false
+    t.string "shipping_address", null: false
+    t.string "shipping_name", null: false
+    t.integer "product_total", null: false
+    t.integer "postage", null: false
+    t.integer "payment_method", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
